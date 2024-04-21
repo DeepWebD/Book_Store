@@ -59,9 +59,9 @@ app.get('/books', async (req, res) => {
 
 app.put('/book/:id', async (req, res) => {
   const { id } = req.params;
-  const { name, adescriptionge,genre,author,imageURL,availableCount,rating } = req.body;
+  const { name, description,genre,author,imageUrl,availableCount,publishingDate,publisher,rating } = req.body;
   try {
-    const book = await BookSchemaModel.findByIdAndUpdate(id, { name, adescriptionge,genre,author,imageURL,availableCount,rating}, { new: true });
+    const book = await BookSchemaModel.findByIdAndUpdate(id, { name, description,genre,author,imageUrl,availableCount,publishingDate,publisher,rating}, { new: true });
     res.json(book);
   } catch (err) {
     res.status(500).json({ error: err.message });
